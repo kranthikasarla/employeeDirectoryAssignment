@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Employee Directory</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+
+
+        <header class="top-controls">
+            <h1>Employee Directory</h1>
+            <input type="text" id="search" placeholder="Search by name or email"/>
+            <button onclick="openFilter()">Filter</button>
+        </header>
+
+
+        <div class="middle-controls">
+            <div class="sort-and-pageshow-controller">
+            <select style="margin-right: 10px;" id="sort" onchange="sortEmployees()">
+                <option value="">Sort By</option>
+                <option value="firstName">First Name</option>
+                <option value="department">Department</option>
+            </select>
+
+            <label for="pageSize">Show</label>
+            <select id="pageSize" onchange="updatePageSize()">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <label>entries</label>
+            </div>
+            <button class="add-employee-btn" onclick="openForm()" id="addEmployeeId">Add Employee</button>
+        </div>
+
+        
+
+
+        <main>
+            <div class="employee-list" id="employeeList">
+                <div class="employee-card">
+                    <p><strong>ID:</strong> ${employee.id}</p>
+                    <p><strong>Name:</strong> ${employee.firstName} ${employee.lastName}</p>
+                   <p><strong>Email:</strong> ${employee.email}</p>
+                   <p><strong>Department:</strong> ${employee.department}</p>
+                   <p><strong>Role:</strong> ${employee.role}</p>
+                   <button onclick="editEmployee()">Edit</button>
+                   <button onclick="deleteEmployee()">Delete</button>
+                   </div>
+            </div>
+        </main>
+
+
+        <div id="employeeFormModal" class="modal">
+
+            <form id="employeeForm" onsubmit="submitForm(event)">
+                <h2 id="formTitle">Add Employee</h2>
+                <input type="hidden" id="employeeId" />
+                <input type="text" id="firstName" placeholder="First Name" required />
+                <input type="text" id="lastName" placeholder="Last Name" required />
+                <input type="email" id="email" placeholder="Email" required />
+                <input type="text" id="department" placeholder="Department" required />
+                <input type="text" id="role" placeholder="Role" required />
+                <button type="submit">Add</button>
+                <button type="button" onclick="closeForm()">Cancel</button>
+            </form>
+        </div>
+
+
+        
+
+
+        <div id="filterSidebar" class="filter-sidebar">
+            <h3>Filter Employees</h3>
+            <label for="filterName" >First Name</label>
+            <input type="text" id="filterName" style="margin-bottom: 10px;" placeholder="First Name" />
+            <label for="filterDepartment">Department</label>
+            <input type="text" id="filterDepartment" style="margin-bottom: 10px;" placeholder="Department" />
+            <label for="filterRole">Role</label>
+            <input type="text" id="filterRole" style="margin-bottom: 10px;" placeholder="Role" />
+            <div>
+                <button onclick="applyFilter()">Apply</button>
+                <button onclick="closeFilter()">Close</button>
+            </div>
+            
+        </div>
+
+
+        <div class="footer-container">
+            <footer>
+                <h4 class="footer-heading" margin-left: 30px;">@ 2025 Employee Directory App. All Rghts Reserved. </h4>
+            </footer>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="indexx.js"></script>
+    </body>
+
+
+</html>
